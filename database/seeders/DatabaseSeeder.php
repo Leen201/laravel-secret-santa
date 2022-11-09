@@ -15,5 +15,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(100)->create();
+
+        $array = range(1, 100);
+        shuffle($array);
+        foreach (User::all() as $user){
+            $user->update(['receiver_id' => $array[$user->id - 1]]);
+        }
     }
 }
