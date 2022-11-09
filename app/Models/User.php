@@ -41,13 +41,13 @@ class User extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function receiver(): HasOne
+    public function receiver(): BelongsTo
     {
-        return $this->hasOne(User::class, 'receiver_id');
+        return $this->BelongsTo(User::class, 'receiver_id');
     }
 
-    public function sender(): BelongsTo
+    public function sender(): HasOne
     {
-        return $this->belongsTo(User::class, 'receiver_id');
+        return $this->HasOne(User::class, 'receiver_id');
     }
 }
